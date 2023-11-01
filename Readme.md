@@ -29,7 +29,7 @@ $$
 The block diagram below shows the methodology used to generate the dataset using the given online learning rule $g$ and use that dataset to train the correction term $\hat g$
 
 <center>
-    <img src="./figs/block_diagram.png" alt="StROL_Framework" style="zoom:33%;" />
+    <img src="./figs/block_diagram.jpg" alt="StROL_Framework" style="zoom:33%;" />
     <br>
     <div align="center">
         Figure 1: Framework of offline training of StROL.
