@@ -19,7 +19,7 @@ git clone https://github.com/VT-Collab/StROL.git
 ```
 
 
-## Training StROL
+## Implementation of StROL
 In StROL, we modify the learning dynamics of the system to incorporate a correction term in order to make learning from noisy and suboptimal actions more robust.
 
 $$
