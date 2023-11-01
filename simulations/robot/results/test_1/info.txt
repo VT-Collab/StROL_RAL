@@ -1,0 +1,1 @@
+These results are for the test of the trainied model g_tilde2
