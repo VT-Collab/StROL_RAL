@@ -45,3 +45,8 @@ In this setting, a robot car (a car controlled by a robot) is driving in front o
 
 Below, we define the features and the online learning rule $g$ used for getting the above described behavior of the robot and the human. 
 
+### Robot Environment
+
+## Results
+
+## Computational Overheads
