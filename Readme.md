@@ -20,5 +20,15 @@ git clone https://github.com/VT-Collab/StROL.git
 
 
 ## Training StROL
+First, enter the environment in which you wish to run the simulation (Robot or CARLO) using `mkdir simulations/robot/` or `mkdir simulations/CARLO/`
 
-First, enter the environment in which you wish to run the simulations using `mkdir simulations/robot/` or `mkdie simulations/CARLO/`
+## Training StROL
+In StROL, we modify the learning dynamics of the system to incorporate a correction term in order to make learning from noisy and suboptimal actions more robust.
+
+$$
+\tilde g = g + \hat g
+$$
+
+For our implementation we formulate the correction term $\hat g$ as a fully connected neural network.
+
+### Robot Environment
