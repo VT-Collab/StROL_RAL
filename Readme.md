@@ -86,11 +86,13 @@ The features used in this environment and the robot's original learning dynamics
 - 3-D distancs of the robot's end-effector from the cup $d_c$
 
 The learning rule $g$ for the robot is defined as
+
 $$
 g = [d_p^{t+1} - d_p^t, d_c^{t+1} - d_c^t]
 $$
 
 Let $\theta = \{\theta_p, \theta_c\}$ be the reward parameters. The reward function of the task is defined as
+
 $$
 \mathcal{R}(\theta) = \theta_p \cdot d_p + \theta_c \cdot d_c
 $$
