@@ -186,8 +186,7 @@ We vary the value of lambda from 0.5 to 10 and report the results for two differ
 
 <center>
     <div align="center">
-        <img src="./figs/regret_gvar.png" width="33%" />
-        <img src="./figs/regret_gvar_uniform.png" width="33%" />
+        <img src="./figs/regret_gvar.png" width="75%" />
         <br>
         Figure 2: Performance of StROL with varying relative weights of $g$ and $g_hat$.
     </div>
