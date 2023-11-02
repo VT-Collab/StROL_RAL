@@ -56,9 +56,9 @@ $$
 g = [d^{t+1} - d^t, \max(0.25, v^{t+1} - v^t), -h]
 $$
 
-To train StROL for the Highway environment, move to the corresponding folder
+For the Highway environment, move to the corresponding folder using
 ```bash
-mkdir simulations/CARLO
+cd simulations/CARLO
 ```
 
 To train a the correction term $\hat g$, run the following command
@@ -96,6 +96,23 @@ Let $\theta = \{\theta_p, \theta_c\}$ be the reward parameters. The reward funct
 $$
 \mathcal{R}(\theta) = \theta_p \cdot d_p + \theta_c \cdot d_c
 $$
+
+For training the $\hat g$ for the Robot environment, move to the corresponding folder using
+```bash
+cd simulations/robot
+```
+
+And then run 
+```bash
+python3 test_ours.py --train
+```
+This will train $\hat g$ to expand the basins of attraction and enable learning from noisy and biased actions for the default noise and bias values set in `test_ours/py`. To change the noise and bias values, provide `--noise` and `--bias` as arguments with the training command.
+
+We provide a pretrained model for $\tilde g$ in the `g_data/g_tilde/model_2objs_500`. To test StROL in the Robot environment, run
+```bash
+python3 test_ours.py --eval --boltzmann
+```
+This code uses a boltzmann rational model of the human to provide corrections to the robot. The simulated human, by default, chooses their actions from a binormal distribution of tasks. To use a uniform prior for the tasks, add the argument `--uniform` when running the script. 
 
 ### User Study
 In our in-person user-study, the participants interact with a 7-DoF Franka Emika Panda robot arm to teach it 3 different tasks. The state and action space for one task is 3-dimensional, i.e. $x, u \in \mathbb{R}^3$, while for the other two tasks the state and action spaces are 6-dimensional ($x, u \in \mathbb{R}^6$). The robot is carrying a cup and its workspace consists of 2 objects (a pitcher and a plate). For the $1st$ task, the robot had access to three features, while for the $2nd$ and $3rd$ task the robot was given 4 features. For all tasks, $\hat g$ was trained with multinormal priors with number of possible tasks equal to the number of features.
