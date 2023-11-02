@@ -197,6 +197,7 @@ We observe that the relative weight of $g$ and $\hat g$ does not have a signific
 
 Next, we move on to test the efficacy of StROL when the user teaching the task changes their desired task parameters midway through the interaction. In this simulation, the simulated human always chooses a task from the prior. For the first 2 timesteps, the human provides corrections for one task from the prior and for the remaining 3 timesteps provides corrections for the other task. The performance of the robot using different approaches is summarized in the plot below.
 
+<img style="float: center;" src="./figs/ch_pref_noise_0.025_bias_0.0.png">
 <center>
     <img src="./figs/ch_pref_noise_0.025_bias_0.0.png" alt="StROL_Framework" style="zoom:15%;" />
     <br>
