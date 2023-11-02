@@ -142,7 +142,7 @@ cd user_study
 The pre-trained model of $\tilde g$ for Task 1 is saved in `g_data/model_t1`, and the pre-trained model for Task 2 and Task 3 is saved in `g_data/model_t2'.
 To run tests on the robot, run the following command:
 ```bash
-python3 user_study.py --eval --alg <> --task <> --env_dim <> --n_features <>
+python3 user_study.py --eval --alg <algorithm> --task <task number> --env_dim <3/6> --n_features <3/4>
 ```
 `--alg` defines the algorithm being used for the test - 'strol', 'oat' or 'mof', `--task` takes in the task number, i.e. 1, 2 or 3, `--env_dim` should be 3 for Task 1 and 6 otherwise and `--n_features` is 3 for Task 1 and 4 for the other tasks. If you want the robot to play the optimal robot trajectory for a given task use `--demo` argument when running the script.
 
