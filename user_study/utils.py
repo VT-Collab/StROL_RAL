@@ -428,13 +428,13 @@ class Learner():
 			pos = torch.FloatTensor(xi_c[idx, :])
 			u = torch.FloatTensor(xi_c[idx+1, :] - xi_c[idx, :])
 
-			if self.args.alg == 'ours':
+			if self.args.alg == 'strol':
 				theta += self.gamma * self.model.g_tilde_eval(pos, 3*u, features, self.args)[-1]
-			elif self.args.alg == 'b1':
+			elif self.args.alg == 'oat':
 				g_func = self.model.g_function_eval(pos, 3*u, features, self.args)[-1]
 				update_idx = np.argmax(abs(g_func.detach().numpy()))
 				theta[update_idx] += self.gamma * g_func[update_idx]
-			elif self.args.alg == 'b2':
+			elif self.args.alg == 'mof':
 				dist_threshold = 2.0
 				U = torch.FloatTensor(3 * np.max(abs(u.detach().numpy()))* (1 - 2*np.random.rand(100, self.args.env_dim)))
 				theta_star_h = torch.eye(self.args.env_dim)
