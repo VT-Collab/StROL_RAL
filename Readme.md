@@ -149,4 +149,37 @@ python3 user_study.py --eval --alg <algorithm> --task <task number> --env_dim <3
 
 ## Results
 
+### Highway Simulation
+The results for the highway simulation are tabulated below:
+
+|      **Condition**     |              |             | **Methods** |             |             |
+|:----------------------:|:------------:|:-----------:|:-----------:|:-----------:|:-----------:|
+|                        | **Gradient** |   **One**   |   **MOF**   |   **e2e**   |  **StROL**  |
+|      **Training**      |  0.59 ± 0.36 | 0.51 ± 0.37 | 0.58 ± 0.36 | 0.48 ± 0.08 | 0.31 ± 0.06 |
+|  **0% Noise 0% Bias**  |  0.55 ± 0.36 | 0.53 ± 0.35 | 0.56 ± 0.37 | 0.48 ± 0.08 | 0.30 ± 0.08 |
+| **50% Noise 50% Bias** |  1.18 ± 0.48 | 1.18 ± 0.41 | 1.08 ± 0.48 |  1.18 ± 0.6 |  1.09 ± 0.6 |
+|    **Uniform Prior**   |  1.07 ± 0.43 |  1.1 ± 0.45 | 1.01 ± 0.42 |  0.98 ± 0.4 | 0.10 ± 0.42 |
+
+
+### Robot Simulation
+The results for the Robot simulation are tabulated below:
+
+|      **Condition**     |              |              |  **Methods** |             |               |
+|:----------------------:|:------------:|:------------:|:------------:|:-----------:|:-------------:|
+|                        | **Gradient** |    **One**   |    **MOF**   |   **e2e**   |   **StROL**   |
+|      **Training**      |  0.18 ± 0.37 | 0.20 ±  0.38 | 0.12 ±  0.29 | 3.69 ± 0.89 | 0.001 ± 0.004 |
+|  **0% Noise 0% Bias**  |  0.10 ± 0.26 |  0.14 ± 0.33 |  0.06 ± 0.18 | 3.86 ± 0.95 |  0.01 ± 0.08  |
+| **50% Noise 50% Bias** |  0.77 ± 0.84 |  0.44 ± 0.68 |  0.47 ± 0.59 | 3.25 ± 1.36 |  0.16 ±  0.83 |
+|    **Uniform Prior**   |  0.17 ± 0.47 |  0.18 ± 0.50 |  0.18 ± 0.46 | 1.12 ± 0.49 |  0.12 ± 0.34  |
+
+
+### User Study
+In our user study, we measure the performance of a the robot by measuring the regret in performing the task and the time for which the users proivided corrections to the robot to convey their intended task. The objective results for the user study are tabulated below:
+
+|        **Metric**       |   **Methods**  |             |              |
+|:-----------------------:|:--------------:|:-----------:|:------------:|
+|                         |     **One**    |   **MOF**   |   **StROL**  |
+|        **Regret**       | 4.904 ± 1.125  | 2.42 ± 0.48 |  1.03 ± 0.08 |
+| **Correction Time (s)** |   2.50 ± 1.57  | 2.22 ± 1.53 | 1.382 ± 1.40 |
+
 ## Computational Overheads
