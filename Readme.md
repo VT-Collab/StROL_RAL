@@ -51,6 +51,7 @@ Below, we define the features and the online learning rule $g$ used for getting 
 - Heading direction of the human car $h$
 
 The learning rule of the robot $g$ is defined as the change in the features at each timestep
+
 $$
 g = [d^{t+1} - d^t, \max(0.25, v^{t+1} - v^t), -h]
 $$
@@ -59,14 +60,17 @@ To train StROL for the Highway environment, move to the corresponding folder
 ```bash
 mkdir simulations/CARLO
 ```
+
 To train a the correction term $\hat g$, run the following command
 ```bash
 python3 test_ours.py --train
 ```
+
 We provide a trained model for the environment with $10\%$ noise and $0$ bias in the human actions. You can test the performance of this pre-trained model by running the following command
 ```bash
 python3 test_ours.py --eval
 ```
+
 This script will run the evaluation script for the Highway environment for StROL and the baselines and save a plot for the performance of the different approached.
 
 In order to test the trained model with different noise and bias levels, you can provide the noise using `--noise` and `--bias` arguments respectively.
