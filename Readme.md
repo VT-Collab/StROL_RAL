@@ -30,7 +30,7 @@ The block diagram below shows the methodology used to generate the dataset using
 
 <center>
     <div align="center">
-        <img src="./figs/block_diagram.png" width="100%" />
+        <img src="./figs/block_diagram.png" width="75%" />
         <br>
         Figure 1: Framework of offline training of StROL.
     </div>
@@ -185,11 +185,11 @@ $$
 We vary the value of lambda from 0.5 to 10 and report the results for two different testing conditions --- (a) when the simulated human model matches that of training and (b) when the simulated human uses a prior different from the training conditions. 
 
 <center>
-    <img src="./figs/regret_gvar.png"  />
-    <img src="./figs/regret_gvar_uniform.png"  />
-    <br>
     <div align="center">
-        Figure 1: Performance of StROL with varying relative weights of $g$ and $g_hat$.
+        <img src="./figs/regret_gvar.png" width="50%" />
+        <img src="./figs/regret_gvar_uniform.png" width="50%" />
+        <br>
+        Figure 2: Performance of StROL with varying relative weights of $g$ and $g_hat$.
     </div>
 </center>
 
@@ -198,10 +198,10 @@ We observe that the relative weight of $g$ and $\hat g$ does not have a signific
 Next, we move on to test the efficacy of StROL when the user teaching the task changes their desired task parameters midway through the interaction. In this simulation, the simulated human always chooses a task from the prior. For the first 2 timesteps, the human provides corrections for one task from the prior and for the remaining 3 timesteps provides corrections for the other task. The performance of the robot using different approaches is summarized in the plot below.
 
 <center>
-    <img src="./figs/ch_pref_noise_0.025_bias_0.0.png" alt="StROL_Framework" style="zoom:15%;" />
-    <br>
     <div align="center">
-        Figure 1: Performance of StROL with varying relative weights of $g$ and $g_hat$.
+        <img src="./figs/ch_pref_noise_0.025_bias_0.0.png"  width="50%" />
+        <br>
+        Figure 3: Performance of StROL with varying relative weights of $g$ and $g_hat$.
     </div>
 </center>
 
