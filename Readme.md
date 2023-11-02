@@ -30,7 +30,7 @@ The block diagram below shows the methodology used to generate the dataset using
 
 <center>
     <div align="center">
-        <img src="./figs/block_diagram.png" style="zoom:33%;" />
+        <img src="./figs/block_diagram.png" width="200" />
         <br>
         Figure 1: Framework of offline training of StROL.
     </div>
