@@ -45,10 +45,51 @@ In this setting, a robot car (a car controlled by a robot) is driving in front o
 
 Below, we define the features and the online learning rule $g$ used for getting the above described behavior of the robot and the human. 
 
+#### Features
+- Distance between the cars $d = x_{\mathcal{R}} - x_{\mathcal{H}}$
+- Speed of the robot car $v$
+- Heading direction of the human car $h$
+
+The learning rule of the robot $g$ is defined as the change in the features at each timestep
+$$
+g = [d^{t+1} - d^t, \max(0.25, v^{t+1} - v^t), -h]
+$$
+
+To train StROL for the Highway environment, move to the corresponding folder
+```bash
+mkdir simulations/CARLO
+```
+To train a the correction term $\hat g$, run the following command
+```bash
+python3 test_ours.py --train
+```
+We provide a trained model for the environment with $10\%$ noise and $0$ bias in the human actions. You can test the performance of this pre-trained model by running the following command
+```bash
+python3 test_ours.py --eval
+```
+This script will run the evaluation script for the Highway environment for StROL and the baselines and save a plot for the performance of the different approached.
+
+In order to test the trained model with different noise and bias levels, you can provide the noise using `--noise` and `--bias` arguments respectively.
+The full list of arguments for training and testing and their default values can be seen in `test_ours.py`
+
 ### Robot Environment
 In this environment, a simulated human is trying to convey thier task preferences to the robot. The action and state spaces in this environment are both 3-dimensional, i.e. $x, u \in \mathbb{R}^3$. For training, the robot is randomly initialized in the environment and the simulated human provides corrections in order to convey their task preferences. The environment consists of two objects --- a plate and a cup. We model the prior in this environment as a bimodal distribution where the human can teach the robot either (a) to move to the cup and avoid the plate or (b) to move to the plate while avoiding the cup.
 
 The features used in this environment and the robot's original learning dynamics $g$ are defined below.
+
+#### Features
+- 2-D distance of the robot's end-effector from the plate $d_p$
+- 3-D distancs of the robot's end-effector from the cup $d_c$
+
+The learning rule $g$ for the robot is defined as
+$$
+g = [d_p^{t+1} - d_p^t, d_c^{t+1} - d_c^t]
+$$
+
+Let $\theta = \{\theta_p, \theta_c\}$ be the reward parameters. The reward function of the task is defined as
+$$
+\mathcal{R}(\theta) = \theta_p \cdot d_p + \theta_c \cdot d_c
+$$
 
 ### User Study
 In our in-person user-study, the participants interact with a 7-DoF Franka Emika Panda robot arm to teach it 3 different tasks. The state and action space for one task is 3-dimensional, i.e. $x, u \in \mathbb{R}^3$, while for the other two tasks the state and action spaces are 6-dimensional ($x, u \in \mathbb{R}^6$). The robot is carrying a cup and its workspace consists of 2 objects (a pitcher and a plate). For the $1st$ task, the robot had access to three features, while for the $2nd$ and $3rd$ task the robot was given 4 features. For all tasks, $\hat g$ was trained with multinormal priors with number of possible tasks equal to the number of features.
