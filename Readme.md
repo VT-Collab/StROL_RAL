@@ -150,7 +150,9 @@ python3 user_study.py --eval --alg <algorithm> --task <task number> --env_dim <3
 ## Results
 
 ### Highway Simulation
-The results for the highway simulation are tabulated below:
+In the Highway environment, the robot car observes the actions and updates its estimate of the human car's task parameters. The performance of the algorithms is quantifies by the error in the estimate of the human car's task parameters. 
+
+The performance of different learning approaches averaged over 250 runs for the highway simulation are tabulated below:
 
 |      **Condition**     |              |             | **Methods** |             |             |
 |:----------------------:|:------------:|:-----------:|:-----------:|:-----------:|:-----------:|
@@ -162,7 +164,9 @@ The results for the highway simulation are tabulated below:
 
 
 ### Robot Simulation
-The results for the Robot simulation are tabulated below:
+In this environment, the simulated interacts with the robot to provide corrections over 5 timesteps to convey their desired task parameters. The performance of the robot is measured in terms of regret $Reg = \sum_{x\in \xi^*} R(x, \theta^*) - \sum_{x\in \xi_\theta} R(x, \theta^*)$.
+
+The results for the Robot simulation for different approaches averaged over 100 runs are tabulated below:
 
 |      **Condition**     |              |              |  **Methods** |             |               |
 |:----------------------:|:------------:|:------------:|:------------:|:-----------:|:-------------:|
@@ -172,6 +176,36 @@ The results for the Robot simulation are tabulated below:
 | **50% Noise 50% Bias** |  0.77 ± 0.84 |  0.44 ± 0.68 |  0.47 ± 0.59 | 3.25 ± 1.36 |  0.16 ±  0.83 |
 |    **Uniform Prior**   |  0.17 ± 0.47 |  0.18 ± 0.50 |  0.18 ± 0.46 | 1.12 ± 0.49 |  0.12 ± 0.34  |
 
+We also performed simulated experiments in this environment to study the effect that the relative weight of $g$ and $\hat g$ has on the online learning from humans. We write the equation for modified learning dynamics as 
+
+$$
+\tilde g = g + \lambda \cdot \hat g
+$$
+
+We vary the value of lambda from 0.5 to 10 and report the results for two different testing conditions --- (a) when the simulated human model matches that of training and (b) when the simulated human uses a prior different from the training conditions. 
+
+<center>
+    <img src="./figs/regret_gvar.png" alt="StROL_Framework" style="zoom:33%;" />
+    <img src="./figs/regret_gvar_uniform.png" alt="StROL_Framework" style="zoom:33%;" />
+    <br>
+    <div align="center">
+        Figure 1: Performance of StROL with varying relative weights of $g$ and $g_hat$.
+    </div>
+</center>
+
+We observe that the relative weight of $g$ and $\hat g$ does not have a significant effect on the performance of StROL when the simulated human takes actions according to the prior of tasks. However, if the simulated human tries to teach a task different from priors, the baselines significantly outperfrom StROL with when $\lambda = 5, 10$. However, when the relative weight of $\hat g$ is similar to that of $g$, StROL performs similar to the baslelines
+
+Next, we move on to test the efficacy of StROL when the user teaching the task changes their desired task parameters midway through the interaction. In this simulation, the simulated human always chooses a task from the prior. For the first 2 timesteps, the human provides corrections for one task from the prior and for the remaining 3 timesteps provides corrections for the other task. The performance of the robot using different approaches is summarized in the plot below.
+
+<center>
+    <img src="./figs/ch_pref_noise_0.025_bias_0.0.png" alt="StROL_Framework" style="zoom:33%;" />
+    <br>
+    <div align="center">
+        Figure 1: Performance of StROL with varying relative weights of $g$ and $g_hat$.
+    </div>
+</center>
+
+We observe that the using StROL, the simulate humans able to convey their task preferences to the robot more efficiently even if their preferences changed in between the interaction.
 
 ### User Study
 In our user study, we measure the performance of a the robot by measuring the regret in performing the task and the time for which the users proivided corrections to the robot to convey their intended task. The objective results for the user study are tabulated below:
