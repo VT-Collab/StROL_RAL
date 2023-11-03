@@ -67,7 +67,7 @@ To train a the correction term $\hat g$, run the following command
 python3 test_ours.py --train
 ```
 
-We provide a trained model for the environment with $10\\%$ noise and $0$ bias in the human actions. You can test the performance of this pre-trained model by running the following command
+We provide a trained model for the environment with $10\\%$ noise and $0\\%$ bias in the human actions. You can test the performance of this pre-trained model by running the following command
 ```bash
 python3 test_ours.py --eval
 ```
