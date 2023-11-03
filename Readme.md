@@ -245,9 +245,9 @@ In our user study, we measure the performance of a the robot by measuring the re
 #### **Task 3**
 <center>
     <div align="center">
-        <img src="./figs/Task3_One.gif" alt="T3_One" style="zoom:75%">
-        <img src="./figs/Task3_MOF.gif" alt="T3_MOF" style="zoom:75%">
-        <img src="./figs/Task3_StROL.gif" alt="T3_StROL" style="zoom:75%">
+        <img src="./figs/Task3_One.gif" alt="T3_One" style="zoom:30%">
+        <img src="./figs/Task3_MOF.gif" alt="T3_MOF" style="zoom:30%">
+        <img src="./figs/Task3_StROL.gif" alt="T3_StROL" style="zoom:30%">
         <br>
         Figure 6: Users teaching Task 3 using different approaches
     </div>
