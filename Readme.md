@@ -172,6 +172,7 @@ In this environment, the simulated interacts with the robot to provide correctio
 The results for the Robot simulation for different approaches averaged over 100 runs are tabulated below:
 
 <center>
+<div align="center">
 
 |      **Condition**     |              |              |  **Methods** |             |               |
 |:----------------------:|:------------:|:------------:|:------------:|:-----------:|:-------------:|
@@ -181,6 +182,7 @@ The results for the Robot simulation for different approaches averaged over 100 
 | **50% Noise 50% Bias** |  0.77 ± 0.84 |  0.44 ± 0.68 |  0.47 ± 0.59 | 3.25 ± 1.36 |  0.16 ±  0.83 |
 |    **Uniform Prior**   |  0.17 ± 0.47 |  0.18 ± 0.50 |  0.18 ± 0.46 | 1.12 ± 0.49 |  0.12 ± 0.34  |
 
+</div>
 </center>
 
 We also performed simulated experiments in this environment to study the effect that the relative weight of $g$ and $\hat g$ has on the online learning from humans. We write the equation for modified learning dynamics as 
@@ -218,11 +220,11 @@ In our user study, we measure the performance of a the robot by measuring the re
 
 <center>
 
-    |        **Metric**       |                | **Methods** |              |
-    |:-----------------------:|:--------------:|:-----------:|:------------:|
-    |                         |     **One**    |   **MOF**   |   **StROL**  |
-    |        **Regret**       | 4.904 ± 1.125  | 2.42 ± 0.48 |  1.03 ± 0.08 |
-    | **Correction Time (s)** |   2.50 ± 1.57  | 2.22 ± 1.53 | 1.382 ± 1.40 |
+|        **Metric**       |                | **Methods** |              |
+|:-----------------------:|:--------------:|:-----------:|:------------:|
+|                         |     **One**    |   **MOF**   |   **StROL**  |
+|        **Regret**       | 4.904 ± 1.125  | 2.42 ± 0.48 |  1.03 ± 0.08 |
+| **Correction Time (s)** |   2.50 ± 1.57  | 2.22 ± 1.53 | 1.382 ± 1.40 |
 
 </center>
 
@@ -233,11 +235,11 @@ The offline training times for different experiments are tabulated below.
 
 <center>
 
-    | **Experiment**  | ** # of Training Steps ** | **Training Time (mins)** |
-    |:---------------:|:-------------------------:|:------------------------:|
-    |   **Highway**   |          1000             |       ~105 minutes       |
-    |    **Robot**    |           500             |        ~10 minutes       | 
-    | **User Study**  |          2000             |        ~45 minutes       | 
+| **Experiment**  | ** # of Training Steps ** | **Training Time (mins)** |
+|:---------------:|:-------------------------:|:------------------------:|
+|   **Highway**   |          1000             |       ~105 minutes       |
+|    **Robot**    |           500             |        ~10 minutes       | 
+| **User Study**  |          2000             |        ~45 minutes       | 
 
 </center>
 
