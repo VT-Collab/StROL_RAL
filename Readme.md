@@ -36,6 +36,7 @@ The block diagram below shows the methodology used to generate the dataset using
     </div>
 </center>
 
+<br>
 For our implementation we formulate the correction term $\hat g$ as a fully connected neural network.
 
 Next, we explain the implementation of StROL in different simulation environments. We define the online learning rule $g$ and discuss the hyperparameters used for training.
@@ -201,10 +202,11 @@ We vary the value of lambda from 0.5 to 10 and report the results for two differ
     <div align="center">
         <img src="./figs/regret_gvar.png" width="75%" />
         <br>
-        Figure 2: Performance of StROL with varying relative weights of $g$ and $g_hat$.
+        Figure 2: Performance of StROL with varying relative weights of the original learning dynamics and the correction term.
     </div>
 </center>
 
+<br>
 We observe that the relative weight of $g$ and $\hat g$ does not have a significant effect on the performance of StROL when the simulated human takes actions according to the prior of tasks. However, if the simulated human tries to teach a task different from priors, the baselines significantly outperfrom StROL with when $\lambda = 5, 10$. However, when the relative weight of $\hat g$ is similar to that of $g$, StROL performs similar to the baslelines
 
 Next, we move on to test the efficacy of StROL when the user teaching the task changes their desired task parameters midway through the interaction. In this simulation, the simulated human always chooses a task from the prior. For the first 2 timesteps, the human provides corrections for one task from the prior and for the remaining 3 timesteps provides corrections for the other task. The performance of the robot using different approaches is summarized in the plot below.
@@ -213,10 +215,11 @@ Next, we move on to test the efficacy of StROL when the user teaching the task c
     <div align="center">
         <img src="./figs/ch_pref_noise_0.025_bias_0.0.png"  width="50%" />
         <br>
-        Figure 3: Performance of StROL with varying relative weights of $g$ and $g_hat$.
+        Figure 3: Comparison of StROL with the baselines when the user changes preference for teaching a task midway through the interaction.
     </div>
 </center>
 
+<br>
 We observe that the using StROL, the simulate humans able to convey their task preferences to the robot more efficiently even if their preferences changed in between the interaction.
 
 ### User Study
@@ -233,6 +236,8 @@ In our user study, we measure the performance of a the robot by measuring the re
     </div>
 </center>
 
+<br>
+
 #### **Task 2**
 <center>
     <div align="center">
@@ -243,6 +248,8 @@ In our user study, we measure the performance of a the robot by measuring the re
         Figure 5: Users teaching Task 3 using different approaches
     </div>
 </center>
+
+<br>
 
 #### **Task 3**
 <center>
@@ -255,6 +262,7 @@ In our user study, we measure the performance of a the robot by measuring the re
     </div>
 </center>
 
+<br>
 
  The  averages objective results for all tasks in the user study are shown below:
 
@@ -276,9 +284,11 @@ We also plot the the Correction Time vs Regret for all tasks and approaches in a
     <div align="center">
         <img src="./figs/Scatter_regret_vs_corr.png"  width="50%" />
         <br>
-        Figure 3: Performance of StROL with varying relative weights of $g$ and $g_hat$.
+        Figure 7: Scatter Plot for showing Regret vs Number of corrections provided by the users for all approaches.
     </div>
 </center>
+
+<br>
 
 ## Hardware Requirements and Computational Overheads
 
