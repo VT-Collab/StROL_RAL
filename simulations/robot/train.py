@@ -52,19 +52,6 @@ class TRAIN():
 		for idx in range(int(n_samples/n_features)):
 			THETA[idx*n_features:idx*n_features+n_features] = theta_s + np.random.normal(0, 0.1, (n_features, n_features))
 
-		# theta_s = np.zeros((2*n_features, n_features))
-		# for obj_idy in range(n_features):
-		# 	for obj_idx in range(n_features):
-		# 		theta_s[obj_idx, obj_idy] = (-1)**(obj_idx+obj_idy) * 0.8
-
-		# for obj_idy in range(n_features):
-		# 	for obj_idx in range(n_features):
-		# 		theta_s[2+obj_idx, obj_idy] = (-1)**(obj_idx) * 0.8
-
-		# THETA = np.zeros((n_samples, n_features))
-		# for idx in range(int(n_samples/n_features/2)):
-		# 	THETA[idx*2*n_features:idx*2*n_features+2*n_features] = theta_s + np.random.normal(0, 0.1, (2*n_features, n_features))
-
 		n_batch = args.batch_size
 		EPOCH = args.n_train_steps
 
@@ -116,45 +103,3 @@ class TRAIN():
 			tqdm.write("loss at epoch {} is {}".format(epoch, loss))
 			if epoch%100 == 0:
 				torch.save(model.state_dict(), 'g_data/model_' + str(args.n_features) + 'objs_' + str(epoch))
-
-
-
-
-"""
-For simulations, there should be at least 2 features (say height from table and dist from laptop) that the robot needs to learn. 
-We treat the table and the laptop as two objects in the environment
-The robot always knows the goal/moves towards the goal. 
-The human intends to teach the robot and always knonws the robot's theta.
-The human stops teaching once the robot's theta reaches close to its own.
-
-workspace : 
-X -> [0.2, 0.7], Y -> [-0.4, 0.5], Z -> [0.0, 0.6]
-Table -> [X, Y, 0.0]
-Laptop -> [0.35, 0.1, 0.0]
-"""
-
-
-"""
-The robot is executing a trajectory. 
-When the human feels that the robot is deviating from their intended trajectory, the human jumps in and starts providing a correction (say for 5 timesteps).
-The robot looks at these 5 timesteps and tries to learn the human's intended reward weights theta_star.
-"""
-
-"""
-OUTLINE FOR SIMULATION 1 (CORRECTIONS):
-yES
-1. The robot is preforming a trajectory towards a goal from a fixed starting point. (use traj_opt for this trajectory or just use a perfect model for taking actions towards the goal from the fixed start point).
-2. Track the error from the human's intended actions. if error > threshold, the human comes in to provide a correction
-3. The human gives the robot 5 continuous inputs. 
-4. Update the reward weights theta based on this input and replan the motion/future actions of the robot.
-	a. For ours, we just use the g functions and the human's actions to learn theta
-	b. For one feature at a time, we use the actions to see which feature changes most according to g and update the theta for that feature
-	c. for misspecified objective functions, we check if the human inputs are relevant to any of the features in the environment and update the theta according to g if they are relevant
-
-NOTE: The robot updates theta based on each input the human provides, i.e. for 5 inputs, the weights are updated 5 times.
-"""
-
-
-"""
-Try the evaluation with boltzmann human as well
-"""

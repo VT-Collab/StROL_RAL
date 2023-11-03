@@ -9,8 +9,6 @@ def main():
 	p = argparse.ArgumentParser()
 	p.add_argument('--train', action='store_true', default=False)
 	p.add_argument('--eval', action='store_true', default=False)
-	p.add_argument('--inv_g', action='store_true', default=False)
-	p.add_argument('--boltzmann', action='store_true', default=False)
 	p.add_argument('--uniform', action='store_true', default=False, help='if true, use uniform prior for sampling human goals')
 
 	p.add_argument('--n_eval', type=int, default=100)

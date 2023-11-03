@@ -10,10 +10,10 @@ class TRAIN():
 	def __init__(self, args):
 		self.args = args
 
-		if not os.path.exists('g_func_exp/g_data/hidden{}_2'.format(args.hidden_size)):
-			os.makedirs('g_func_exp/g_data/hidden{}_2'.format(args.hidden_size))
+		if not os.path.exists('g_func_exp/g_data/hidden{}'.format(args.hidden_size)):
+			os.makedirs('g_func_exp/g_data/hidden{}'.format(args.hidden_size))
 			
-		self.save_name = 'g_func_exp/g_data/hidden{}_2'.format(args.hidden_size)
+		self.save_name = 'g_func_exp/g_data/hidden{}'.format(args.hidden_size)
 
 		self.train(args)
 
