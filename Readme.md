@@ -223,9 +223,9 @@ In our user study, we measure the performance of a the robot by measuring the re
 #### **Task 1**
 <center>
     <div align="center">
-        <img src="./figs/Task1_One.gif" alt="T1_One" style="zoom:75%">
-        <img src="./figs/Task1_MOF.gif" alt="T1_MOF" style="zoom:75%">
-        <img src="./figs/Task1_StROL.gif" alt="T1_StROL" style="zoom:75%">
+        <img src="./figs/Task1_One.gif" alt="T1_One" width="50%">
+        <img src="./figs/Task1_MOF.gif" alt="T1_MOF" width="50%">
+        <img src="./figs/Task1_StROL.gif" alt="T1_StROL" width="50%">
         <br>
         Figure 4: Users teaching Task 1 using different approaches
     </div>
@@ -234,9 +234,9 @@ In our user study, we measure the performance of a the robot by measuring the re
 #### **Task 2**
 <center>
     <div align="center">
-        <img src="./figs/Task2_One.gif" alt="T2_One" style="zoom:75%">
-        <img src="./figs/Task2_MOF.gif" alt="T2_MOF" style="zoom:75%">
-        <img src="./figs/Task2_StROL.gif" alt="T2_StROL" style="zoom:75%">
+        <img src="./figs/Task2_One.gif" alt="T2_One" width="50%">
+        <img src="./figs/Task2_MOF.gif" alt="T2_MOF" width="50%">
+        <img src="./figs/Task2_StROL.gif" alt="T2_StROL" width="50%">
         <br>
         Figure 5: Users teaching Task 3 using different approaches
     </div>
@@ -245,9 +245,9 @@ In our user study, we measure the performance of a the robot by measuring the re
 #### **Task 3**
 <center>
     <div align="center">
-        <img src="./figs/Task3_One.gif" alt="T3_One" style="zoom:30%">
-        <img src="./figs/Task3_MOF.gif" alt="T3_MOF" style="zoom:30%">
-        <img src="./figs/Task3_StROL.gif" alt="T3_StROL" style="zoom:30%">
+        <img src="./figs/Task3_One.gif" alt="T3_One" width="50%">
+        <img src="./figs/Task3_MOF.gif" alt="T3_MOF" width="50%">
+        <img src="./figs/Task3_StROL.gif" alt="T3_StROL" width="50%">
         <br>
         Figure 6: Users teaching Task 3 using different approaches
     </div>
