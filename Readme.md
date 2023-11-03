@@ -172,7 +172,7 @@ The performance of different learning approaches averaged over 250 runs for the 
 In this environment, the simulated interacts with the robot to provide corrections over 5 timesteps to convey their desired task parameters. The performance of the robot is measured in terms of regret as
 
 $$
-Reg = \sum_{x \in \xi^*} \mathcal{R} 
+Reg = \sum_{x \in \xi^*} \mathcal{R} (x)
 $$
 
 The results for the Robot simulation for different approaches averaged over 100 runs are tabulated below:
