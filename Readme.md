@@ -155,6 +155,7 @@ In the Highway environment, the robot car observes the actions and updates its e
 The performance of different learning approaches averaged over 250 runs for the highway simulation are tabulated below:
 
 <center>
+<div align="center">
 
 |      **Condition**     |              |             | **Methods** |             |             |
 |:----------------------:|:------------:|:-----------:|:-----------:|:-----------:|:-----------:|
@@ -164,6 +165,7 @@ The performance of different learning approaches averaged over 250 runs for the 
 | **50% Noise 50% Bias** |  1.18 ± 0.48 | 1.18 ± 0.41 | 1.08 ± 0.48 |  1.18 ± 0.6 |  1.09 ± 0.6 |
 |    **Uniform Prior**   |  1.07 ± 0.43 |  1.1 ± 0.45 | 1.01 ± 0.42 |  0.98 ± 0.4 | 0.10 ± 0.42 |
 
+</div>
 </center>
 
 ### Robot Simulation
@@ -216,9 +218,24 @@ Next, we move on to test the efficacy of StROL when the user teaching the task c
 We observe that the using StROL, the simulate humans able to convey their task preferences to the robot more efficiently even if their preferences changed in between the interaction.
 
 ### User Study
-In our user study, we measure the performance of a the robot by measuring the regret in performing the task and the time for which the users proivided corrections to the robot to convey their intended task. The objective results for the user study are tabulated below:
+In our user study, we measure the performance of a the robot by measuring the regret in performing the task and the time for which the users proivided corrections to the robot to convey their intended task. The videos for the different tasks taught to the robot in the user study can be seen below:
 
 <center>
+    <div align="center">
+        <img src=".figs/Task1_One.gif">
+        <img src=".figs/Task1_MOF.gif">
+        <img src=".figs/Task1_StROL.gif">
+        <br>
+        Figure 4: Users teaching Task 1 using different approaches
+    </div>
+</center>
+
+
+
+ The objective results for the user study are tabulated below:
+
+<center>
+<div align="center">
 
 |        **Metric**       |                | **Methods** |              |
 |:-----------------------:|:--------------:|:-----------:|:------------:|
@@ -226,6 +243,7 @@ In our user study, we measure the performance of a the robot by measuring the re
 |        **Regret**       | 4.904 ± 1.125  | 2.42 ± 0.48 |  1.03 ± 0.08 |
 | **Correction Time (s)** |   2.50 ± 1.57  | 2.22 ± 1.53 | 1.382 ± 1.40 |
 
+</div>
 </center>
 
 ## Hardware Requirements and Computational Overheads
@@ -234,13 +252,15 @@ The offline learning of the correction term was performed on a system with 8 cor
 The offline training times for different experiments are tabulated below.
 
 <center>
+<div align="center">
 
-| **Experiment**  | ** # of Training Steps ** | **Training Time (mins)** |
+| **Experiment**  | **# of Training Steps** | **Training Time (mins)** |
 |:---------------:|:-------------------------:|:------------------------:|
 |   **Highway**   |          1000             |       ~105 minutes       |
 |    **Robot**    |           500             |        ~10 minutes       | 
 | **User Study**  |          2000             |        ~45 minutes       | 
 
+</div>
 </center>
 
 The offline training is performned only once for a given environment and a set of priors. The correction term $\hat g$ does not update when learning inline from human feedback. 
