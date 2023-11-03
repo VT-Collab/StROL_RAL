@@ -218,21 +218,43 @@ Next, we move on to test the efficacy of StROL when the user teaching the task c
 We observe that the using StROL, the simulate humans able to convey their task preferences to the robot more efficiently even if their preferences changed in between the interaction.
 
 ### User Study
-In our user study, we measure the performance of a the robot by measuring the regret in performing the task and the time for which the users proivided corrections to the robot to convey their intended task. The videos for the different tasks taught to the robot in the user study can be seen below:
+In our user study, we measure the performance of a the robot by measuring the regret in performing the task and the time for which the users proivided corrections to the robot to convey their intended task. The gifs of the users teaching different tasks to the robot in the user study can be seen below:
 
+#### **Task 1**
 <center>
     <div align="center">
-        <img src=".figs/Task1_One.gif" alt="T1_One" style="zoom:75%">
-        <img src=".figs/Task1_MOF.gif" alt="T1_MOF" style="zoom:75%">
-        <img src=".figs/Task1_StROL.gif" alt="T1_StROL" style="zoom:75%">
+        <img src="./figs/Task1_One.gif" alt="T1_One" style="zoom:75%">
+        <img src="./figs/Task1_MOF.gif" alt="T1_MOF" style="zoom:75%">
+        <img src="./figs/Task1_StROL.gif" alt="T1_StROL" style="zoom:75%">
         <br>
         Figure 4: Users teaching Task 1 using different approaches
     </div>
 </center>
 
+#### **Task 2**
+<center>
+    <div align="center">
+        <img src="./figs/Task2_One.gif" alt="T2_One" style="zoom:75%">
+        <img src="./figs/Task2_MOF.gif" alt="T2_MOF" style="zoom:75%">
+        <img src="./figs/Task2_StROL.gif" alt="T2_StROL" style="zoom:75%">
+        <br>
+        Figure 5: Users teaching Task 3 using different approaches
+    </div>
+</center>
+
+#### **Task 3**
+<center>
+    <div align="center">
+        <img src="./figs/Task3_One.gif" alt="T3_One" style="zoom:75%">
+        <img src="./figs/Task3_MOF.gif" alt="T3_MOF" style="zoom:75%">
+        <img src="./figs/Task3_StROL.gif" alt="T3_StROL" style="zoom:75%">
+        <br>
+        Figure 6: Users teaching Task 3 using different approaches
+    </div>
+</center>
 
 
- The objective results for the user study are tabulated below:
+ The  averages objective results for all tasks in the user study are shown below:
 
 <center>
 <div align="center">
@@ -244,6 +266,16 @@ In our user study, we measure the performance of a the robot by measuring the re
 | **Correction Time (s)** |   2.50 ± 1.57  | 2.22 ± 1.53 | 1.382 ± 1.40 |
 
 </div>
+</center>
+
+We also plot the the Correction Time vs Regret for all tasks and approaches in a scatter plot to analyze the effort that the users had to exert in order to convey their task parameters to the robot:
+
+<center>
+    <div align="center">
+        <img src="./figs/Scatter_regret_vs_corr.png"  width="50%" />
+        <br>
+        Figure 3: Performance of StROL with varying relative weights of $g$ and $g_hat$.
+    </div>
 </center>
 
 ## Hardware Requirements and Computational Overheads
