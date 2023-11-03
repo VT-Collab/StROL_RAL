@@ -222,9 +222,9 @@ In our user study, we measure the performance of a the robot by measuring the re
 
 <center>
     <div align="center">
-        <img src=".figs/Task1_One.gif" alt="T1_MOF" style="zoom:75%">
+        <img src=".figs/Task1_One.gif" alt="T1_One" style="zoom:75%">
         <img src=".figs/Task1_MOF.gif" alt="T1_MOF" style="zoom:75%">
-        <img src=".figs/Task1_StROL.gif" alt="T1_MOF" style="zoom:75%">
+        <img src=".figs/Task1_StROL.gif" alt="T1_StROL" style="zoom:75%">
         <br>
         Figure 4: Users teaching Task 1 using different approaches
     </div>
