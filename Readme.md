@@ -41,7 +41,7 @@ For our implementation we formulate the correction term $\hat g$ as a fully conn
 Next, we explain the implementation of StROL in different simulation environments. We define the online learning rule $g$ and discuss the hyperparameters used for training.
 
 ### Highway Environment
-In this setting, a robot car (a car controlled by a robot) is driving in front of a human car (a car controlled and driven by a human). Both the cars start in the left lane on a two-lane highway. The action and state space for both the cars is 2-dimensional, i.e. $x, u \in \mathbb{R}^2$. The goal of the robot car is to minimize the distance travelled and avoid any collisions with the human car. In this 2-lane highway setting, we assume two possible priors: (a) the human car will change lanes and pass the robot from the right and (b) the human car will tailgate the robot car till it gives way to the robot car. Note that prior (b), the human car does not care about the minimum distance from the robot car but wants to avoid collisions.
+This experiment is performed in the 2-D driving simulator CALRO [[1]](#references). In this setting, a robot car (a car controlled by a robot) is driving in front of a human car (a car controlled and driven by a human). Both the cars start in the left lane on a two-lane highway. The action and state space for both the cars is 2-dimensional, i.e. $x, u \in \mathbb{R}^2$. The goal of the robot car is to minimize the distance travelled and avoid any collisions with the human car. In this 2-lane highway setting, we assume two possible priors: (a) the human car will change lanes and pass the robot from the right and (b) the human car will tailgate the robot car till it gives way to the robot car. Note that prior (b), the human car does not care about the minimum distance from the robot car but wants to avoid collisions.
 
 Below, we define the features and the online learning rule $g$ used for getting the above described behavior of the robot and the human. 
 
@@ -71,7 +71,7 @@ We provide a trained model for the environment with $10\%$ noise and $0$ bias in
 python3 test_ours.py --eval
 ```
 
-This script will run the evaluation script for the Highway environment for StROL and the baselines and save a plot for the performance of the different approached.
+This script will run the evaluation script for the Highway environment for StROL and the baselines --- Gradient , One [[2]](#references), MOF [[3]](#references) and e2e --- and save a plot for the performance of the different approached.
 
 In order to test the trained model with different noise and bias levels, you can provide the noise using `--noise` and `--bias` arguments respectively.
 The full list of arguments for training and testing and their default values can be seen in `test_ours.py`
@@ -112,7 +112,7 @@ We provide a pretrained model for $\tilde g$ in the `g_data/g_tilde/model_2objs_
 ```bash
 python3 test_ours.py --eval --boltzmann
 ```
-This code uses a boltzmann rational model of the human to provide corrections to the robot. The simulated human, by default, chooses their actions from a binormal distribution of tasks. To use a uniform prior for the tasks, add the argument `--uniform` when running the script. The results for the runs for all approaces will be saved in `/results'.
+This code uses a model of the human that always chooses the optimal actions for the given reward function to provide corrections to the robot (noise and bias are added after the optimal action is chosen). The simulated human, by default, chooses their actions from a binormal distribution of tasks. To use a uniform prior for the tasks, add the argument `--uniform` when running the script. The results for the runs for all approaces will be saved in `/results'.
 
 ### User Study
 In our in-person user-study, the participants interact with a 7-DoF Franka Emika Panda robot arm to teach it 3 different tasks. The state and action space for one task is 3-dimensional, i.e. $x, u \in \mathbb{R}^3$, while for the other two tasks the state and action spaces are 6-dimensional ($x, u \in \mathbb{R}^6$). The robot is carrying a cup and its workspace consists of 2 objects (a pitcher and a plate). For the $1st$ task, the robot had access to three features, while for the $2nd$ and $3rd$ task the robot was given 4 features. For all tasks, $\hat g$ was trained with multinormal priors with number of possible tasks equal to the number of features.
@@ -154,6 +154,8 @@ In the Highway environment, the robot car observes the actions and updates its e
 
 The performance of different learning approaches averaged over 250 runs for the highway simulation are tabulated below:
 
+<center>
+
 |      **Condition**     |              |             | **Methods** |             |             |
 |:----------------------:|:------------:|:-----------:|:-----------:|:-----------:|:-----------:|
 |                        | **Gradient** |   **One**   |   **MOF**   |   **e2e**   |  **StROL**  |
@@ -162,11 +164,14 @@ The performance of different learning approaches averaged over 250 runs for the 
 | **50% Noise 50% Bias** |  1.18 ± 0.48 | 1.18 ± 0.41 | 1.08 ± 0.48 |  1.18 ± 0.6 |  1.09 ± 0.6 |
 |    **Uniform Prior**   |  1.07 ± 0.43 |  1.1 ± 0.45 | 1.01 ± 0.42 |  0.98 ± 0.4 | 0.10 ± 0.42 |
 
+</center>
 
 ### Robot Simulation
 In this environment, the simulated interacts with the robot to provide corrections over 5 timesteps to convey their desired task parameters. The performance of the robot is measured in terms of regret $Reg = \sum_{x\in \xi^*} R(x, \theta^*) - \sum_{x\in \xi_\theta} R(x, \theta^*)$.
 
 The results for the Robot simulation for different approaches averaged over 100 runs are tabulated below:
+
+<center>
 
 |      **Condition**     |              |              |  **Methods** |             |               |
 |:----------------------:|:------------:|:------------:|:------------:|:-----------:|:-------------:|
@@ -175,6 +180,8 @@ The results for the Robot simulation for different approaches averaged over 100 
 |  **0% Noise 0% Bias**  |  0.10 ± 0.26 |  0.14 ± 0.33 |  0.06 ± 0.18 | 3.86 ± 0.95 |  0.01 ± 0.08  |
 | **50% Noise 50% Bias** |  0.77 ± 0.84 |  0.44 ± 0.68 |  0.47 ± 0.59 | 3.25 ± 1.36 |  0.16 ±  0.83 |
 |    **Uniform Prior**   |  0.17 ± 0.47 |  0.18 ± 0.50 |  0.18 ± 0.46 | 1.12 ± 0.49 |  0.12 ± 0.34  |
+
+</center>
 
 We also performed simulated experiments in this environment to study the effect that the relative weight of $g$ and $\hat g$ has on the online learning from humans. We write the equation for modified learning dynamics as 
 
@@ -209,10 +216,49 @@ We observe that the using StROL, the simulate humans able to convey their task p
 ### User Study
 In our user study, we measure the performance of a the robot by measuring the regret in performing the task and the time for which the users proivided corrections to the robot to convey their intended task. The objective results for the user study are tabulated below:
 
-|        **Metric**       |   **Methods**  |             |              |
-|:-----------------------:|:--------------:|:-----------:|:------------:|
-|                         |     **One**    |   **MOF**   |   **StROL**  |
-|        **Regret**       | 4.904 ± 1.125  | 2.42 ± 0.48 |  1.03 ± 0.08 |
-| **Correction Time (s)** |   2.50 ± 1.57  | 2.22 ± 1.53 | 1.382 ± 1.40 |
+<center>
 
-## Computational Overheads
+    |        **Metric**       |                | **Methods** |              |
+    |:-----------------------:|:--------------:|:-----------:|:------------:|
+    |                         |     **One**    |   **MOF**   |   **StROL**  |
+    |        **Regret**       | 4.904 ± 1.125  | 2.42 ± 0.48 |  1.03 ± 0.08 |
+    | **Correction Time (s)** |   2.50 ± 1.57  | 2.22 ± 1.53 | 1.382 ± 1.40 |
+
+</center>
+
+## Hardware Requirements and Computational Overheads
+
+The offline learning of the correction term was performed on a system with 8 cores and 16 GB Memory (GPU was not used for training). 
+The offline training times for different experiments are tabulated below.
+
+<center>
+
+    | **Experiment**  | ** # of Training Steps ** | **Training Time (mins)** |
+    |:---------------:|:-------------------------:|:------------------------:|
+    |   **Highway**   |          1000             |       ~105 minutes       |
+    |    **Robot**    |           500             |        ~10 minutes       | 
+    | **User Study**  |          2000             |        ~45 minutes       | 
+
+</center>
+
+The offline training is performned only once for a given environment and a set of priors. The correction term $\hat g$ does not update when learning inline from human feedback. 
+
+The user study is performed on a 7-DoF Franka Emika Panda robot arm. After the user provides feedback to convey their task preferences to the robot, the robot's estimate of the reward parameters is updated in real time (a delay of ~ 2-4 sec). This time delay is similar to the baselines in the user study that also learn in real time form the human feedback. Note that this is the observed delay in learning when performing the experiments on the above specified setup. This delay may differ for different settings and hardware setups.
+
+## Citation
+```bash
+@article{mehta2023strol,
+  title={StROL: Stabilized and Robust Online Learning from Humans},
+  author={Mehta, Shaunak A and Meng, Forrest and Bajcsy, Andrea and Losey, Dylan P},
+  journal={arXiv preprint arXiv:2308.09863},
+  year={2023}
+}
+```
+
+## References
+
+[[1]](https://www.roboticsproceedings.org/rss16/p039.html) Z. Cao, E. Biyik, W. Z. Wang, A. Raventos, A. Gaidon, G. Rosman, and D. Sadigh, “Reinforcement learning based control of imitative policies for near-accident driving,” in RSS, July 2020.
+
+[[2]](https://journals.sagepub.com/doi/full/10.1177/02783649211050958) D. P. Losey, A. Bajcsy, M. K. O’Malley, and A. D. Dragan, “Physical interaction as communication: Learning robot objectives online from human corrections,”  JRR, vol. 41, no. 1, pp. 20–44, 2022.
+
+[[3]](https://ieeexplore.ieee.org/abstract/document/9007490) A. Bobu, A. Bajcsy, J. F. Fisac, S. Deglurkar, and A. D. Dragan, “Quantifying hypothesis space misspecification in learning from human–robot demonstrations and physical corrections,” IEEE Transactions on Robotics, vol. 36, no. 3, pp. 835–854, 2020
