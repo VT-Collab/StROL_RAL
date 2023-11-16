@@ -1,6 +1,6 @@
 # StROL: Stabilized and Robust Online Learning from Humans
 
-This repository provides our implementation of StROL in two different simulation environments and on a 7-DoF Franka Emika Panda robot arm.
+This repository provides our implementation of StROL in two different simulation environments and in a user study on a 7-DoF Franka Emika Panda robot arm. The videos for our user study can be found [here](https://www.youtube.com/watch?v=uDGpkvJnY8g)
 
 ## Dependencies
 You need to have the following libraries with [Python3](https://www.python.org/):
