@@ -85,8 +85,8 @@ class TRAIN():
 				theta0_arr[idx, :] = theta0
 				theta_star_arr[idx, :] = theta_star
 				obj_arr[idx, :] = goals
-			bias = torch.FloatTensor([0.0, 0.0, 0.0])
-			deltas = torch.randn_like(u_opt_arr)*0.025 + bias
+			bias = torch.FloatTensor([args.bias, args.bias, args.bias])
+			deltas = torch.randn_like(u_opt_arr)*args.noise + bias
 
 			err_theta = theta_star_arr - theta0_arr
 			g_tilde = model.g_tilde(pos_arr, u_opt_arr + deltas, obj_arr, args)
