@@ -172,7 +172,7 @@ The performance of different learning approaches averaged over 250 runs for the 
 ### Robot Simulation
 In this environment, the simulated interacts with the robot to provide corrections over 5 timesteps to convey their desired task parameters. The performance of the robot is measured in terms of regret as
 
-$$Reg = \sum_{x\in \xi^*} \mathcal{R} (x, \theta^{\*}) - \sum_{x\in \xi_\theta} \mathcal{R} (x, \theta^{\*})$$
+$$Reg = \sum_{x\in \xi^*} \mathcal{R} (x, \theta^{*}) - \sum_{x\in \xi_\theta} \mathcal{R} (x, \theta^{*})$$
 
 The results for the Robot simulation for different approaches averaged over 100 runs are tabulated below:
 
@@ -190,13 +190,14 @@ The results for the Robot simulation for different approaches averaged over 100 
 </div>
 </center>
 
+#### RELATIVE WEIGHT OF THE CORRECTIVE TERM:
 We also performed simulated experiments in this environment to study the effect that the relative weight of $g$ and $\hat g$ has on the online learning from humans. We write the equation for modified learning dynamics as 
 
 $$
 \tilde g = g + \lambda \cdot \hat g
 $$
 
-We vary the value of lambda from 0.5 to 10 and report the results for two different testing conditions --- (a) when the simulated human model matches that of training and (b) when the simulated human uses a prior different from the training conditions. 
+We vary the value of lambda from 0 to 10 and report the results for two different testing conditions --- (a) "Best Case": when the robot is given the prior and the human model similar to training and (b) "Worst Case": when the robot has an incorrect prior. 
 
 <center>
     <div align="center">
@@ -207,8 +208,13 @@ We vary the value of lambda from 0.5 to 10 and report the results for two differ
 </center>
 
 <br>
-We observe that the relative weight of $g$ and $\hat g$ does not have a significant effect on the performance of StROL when the simulated human takes actions according to the prior of tasks. However, if the simulated human tries to teach a task different from priors, the baselines significantly outperfrom StROL with when $\lambda = 5, 10$. However, when the relative weight of $\hat g$ is similar to that of $g$, StROL performs similar to the baslelines
 
+We observe that when $\lambda = 0$, our StROL algorithm reduces to the Gradient approach (since the corrective term is multiplied by zero). In the best case scenario, we generally observe that StROL is not particularly sensitive to changes in $\lambda$ (when $\lambda > 0$). On the other hand, when the robot has incorrect information about the prior, in the worst case, we observe that as we increase the value of $\lambda$, the performance of StROL worsens and it slowly approaches the performance of e2e. Intuitively, this occurs because the corrective term dominated the original learning dynamics.
+
+
+We observe that the relative weight of $g$ and $\hat g$ does not have a significant effect on the performance of StROL when the simulated human takes actions according to the prior of tasks. However, if the simulated human tries to teach a task different from priors, the baselines significantly outperfrom StROL with when $\lambda = 10$. However, when the relative weight of $\hat g$ is similar to that of $g$, StROL performs similar to the baslelines
+
+#### SIMULATIONS WITH CHANGING USER PREFERENCES
 Next, we move on to test the efficacy of StROL when the user teaching the task changes their desired task parameters midway through the interaction. In this simulation, the simulated human always chooses a task from the prior. For the first 2 timesteps, the human provides corrections for one task from the prior and for the remaining 3 timesteps provides corrections for the other task. The performance of the robot using different approaches is summarized in the plot below.
 
 <center>
@@ -220,7 +226,21 @@ Next, we move on to test the efficacy of StROL when the user teaching the task c
 </center>
 
 <br>
+
 We observe that the using StROL, the simulate humans able to convey their task preferences to the robot more efficiently even if their preferences changed in between the interaction.
+
+#### SIMULATIONS WIHT INCOMPLETE INFORMATION ABOUT PRIOR AND HUMAN MODEL
+In the above simulations and the manuscript, we test the performance of StROL when we have information about the prior and the human model. But in practice, we may not always have access to environment priors. To test the performance of StROL when we do not have access to a prior and only partial information about the human model, we conduct experiments in a simulated Robot environment. For training, the robot is given a prior in the form of a uniform distrubution and the simulated human takes actions with a consistent bias of 25% of the magnitude of largest action. For testing, the simulated humans take actions with a consistent bias and a gaussian noise with variance equal to 25% of the largest action.
+
+<center>
+    <div align="center">
+        <img src="./figs/bias_regret.png"  width="50%" />
+        <br>
+        Figure 3: Comparison of StROL with the baselines when StROL does not have access to environment priors and has only partial information about the human model.
+    </div>
+</center>
+
+We see that StROL has lower regret than each baseline, even when the prior is not known. This suggests that StROL is still useful in settings where the prior is unknown, but the robot has at least partial knowledge of the human model.
 
 ### User Study
 In our user study, we measure the performance of a the robot by measuring the regret in performing the task and the time for which the users proivided corrections to the robot to convey their intended task. The gifs of the users teaching different tasks to the robot in the user study can be seen below:
